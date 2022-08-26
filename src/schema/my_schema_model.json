@@ -3,7 +3,9 @@
     "properties": {
         "name": {
             "type": "string",
-            "required": true
         }
-    }
+    },
+    "required": [
+        "name"
+    ]
 }
