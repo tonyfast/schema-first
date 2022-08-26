@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "my-schema-project"
-description = ''
+description = "a pydantic based project generated from jsonschema"
 readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
@@ -13,15 +13,7 @@ authors = [
   { name = "tonyfast", email = "tony.fast@gmail.com" },
 ]
 classifiers = [
-  "Development Status :: 4 - Beta",
   "Programming Language :: Python",
-  "Programming Language :: Python :: 3.7",
-  "Programming Language :: Python :: 3.8",
-  "Programming Language :: Python :: 3.9",
-  "Programming Language :: Python :: 3.10",
-  "Programming Language :: Python :: 3.11",
-  "Programming Language :: Python :: Implementation :: CPython",
-  "Programming Language :: Python :: Implementation :: PyPy",
 ]
 dependencies = []
 dynamic = ["version"]
