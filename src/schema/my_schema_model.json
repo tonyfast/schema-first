@@ -1,10 +1,15 @@
 {
     "description": "the name interface",
+    "type": "object",
     "properties": {
         "name": {
-            "type": "string",
+            "type": "string"
+        },
+        "description": {
+            "type": "string"
         }
     },
+    "additionalProperties": false,
     "required": [
         "name"
     ]
