@@ -1,6 +1,16 @@
+############## build ##############
+
 [build-system]
 requires = ["hatchling", "hatch-vcs"]
 build-backend = "hatchling.build"
+
+[tool.hatch.build.hooks.custom]
+dependencies = ["datamodel-code-generator"]
+
+[tool.hatch.version]
+source = "vcs"
+
+############## metadata ##############
 
 [project]
 name = "my-schema-project"
@@ -8,40 +18,47 @@ description = "a pydantic based project generated from jsonschema"
 readme = "README.md"
 requires-python = ">=3.7"
 license = "MIT"
-keywords = []
-authors = [
-  { name = "tonyfast", email = "tony.fast@gmail.com" },
-]
-classifiers = [
-  "Programming Language :: Python",
-]
-dependencies = []
+authors = [{ name = "tonyfast", email = "tony.fast@gmail.com" }]
+dependencies = ["pydantic"]
 dynamic = ["version"]
 
-[project.urls]
-Documentation = "https://github.com/tonyfast/my-schema-project#readme"
-Issues = "https://github.com/tonyfast/my-schema-project/issues"
-Source = "https://github.com/tonyfast/my-schema-project"
+############## env ##############
 
-[tool.hatch.version]
-source = "vcs"
-
-[tool.hatch.envs.default]
+[tool.hatch.envs.test]
 dependencies = [
   "pytest",
   "pytest-cov",
+  "hypothesis",
+  "hypothesis-jsonschema"
 ]
-[tool.hatch.envs.default.scripts]
-cov = "pytest --cov-report=term-missing --cov-config=pyproject.toml --cov=my_schema_project --cov=tests"
+
+[tool.hatch.envs.docs]
+dependencies = [
+  "sphinx",
+  "sphinx-jsonschema"
+]
+
+############## scripts ##############
+
+[tool.hatch.envs.test.scripts]
+cov = """pytest \
+-s \
+--hypothesis-verbosity=verbose \
+--cov-report=term-missing \
+--cov-config=pyproject.toml \
+--cov=my_schema_project"""
 no-cov = "cov --no-cov"
 
-[[tool.hatch.envs.test.matrix]]
-python = ["37", "38", "39", "310", "311"]
+[tool.hatch.envs.docs.scripts]
+html = "sphinx-build . _build/html"
+clean = "rm -rf _build"
+
+############## coverage ##############
 
 [tool.coverage.run]
 branch = true
 parallel = true
-omit = []
+omit = ["src/my_schema_project/_version.py"]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -50,8 +67,12 @@ exclude_lines = [
   "if TYPE_CHECKING:",
 ]
 
+############## misc ##############
+
 [tool.hatch.build.hooks.vcs]
 version-file = "src/my_schema_project/_version.py"
 
-[tool.hatch.build.hooks.custom]
-dependencies = ["datamodel-code-generator"]
+[project.urls]
+Documentation = "https://github.com/tonyfast/my-schema-project#readme"
+Issues = "https://github.com/tonyfast/my-schema-project/issues"
+Source = "https://github.com/tonyfast/my-schema-project"
