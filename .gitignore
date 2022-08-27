@@ -1,4 +1,6 @@
 _build
+pytest.html
+htmlcov
 
 src/my_schema_project/models/
 src/my_schema_project/_version.py

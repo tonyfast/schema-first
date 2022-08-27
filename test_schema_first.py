@@ -10,5 +10,5 @@ from my_schema_project import get_item
 
 @given(from_schema(json.loads(SCHEMA.read_text())))
 def test_get_item(data):
-    print(len(data))
+    print(len(data))  # use print debugging for the demo.
     assert str(get_item(**data))

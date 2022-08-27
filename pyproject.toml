@@ -28,6 +28,7 @@ dynamic = ["version"]
 dependencies = [
   "pytest",
   "pytest-cov",
+  "pytest-html",
   "hypothesis",
   "hypothesis-jsonschema"
 ]
@@ -35,7 +36,8 @@ dependencies = [
 [tool.hatch.envs.docs]
 dependencies = [
   "sphinx",
-  "sphinx-jsonschema"
+  "sphinx-jsonschema",
+  "myst-parser"
 ]
 
 ############## scripts ##############
@@ -46,7 +48,11 @@ cov = """pytest \
 --hypothesis-verbosity=verbose \
 --cov-report=term-missing \
 --cov-config=pyproject.toml \
---cov=my_schema_project"""
+--cov=my_schema_project \
+--cov-report html \
+--cov-report annotate \
+--html=pytest.html \
+--self-contained-html"""
 no-cov = "cov --no-cov"
 
 [tool.hatch.envs.docs.scripts]

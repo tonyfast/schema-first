@@ -24,7 +24,7 @@ author = 'tonyfast'
 # The full version, including alpha/beta/rc tags
 release = 'v0.1.2'
 
-master_doc = "src/docs"
+master_doc = "README"
 
 # -- General configuration ---------------------------------------------------
 
@@ -32,7 +32,8 @@ master_doc = "src/docs"
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "sphinx-jsonschema"
+    "sphinx-jsonschema",
+    "myst_parser"
 ]
 
 # Add any paths that contain templates here, relative to this directory.
@@ -41,7 +42,7 @@ templates_path = ['_templates']
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
 # This pattern also affects html_static_path and html_extra_path.
-exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store']
+exclude_patterns = ['_build', 'Thumbs.db', '.DS_Store', '.pytest_cache']
 
 
 # -- Options for HTML output -------------------------------------------------
@@ -54,4 +55,4 @@ html_theme = 'alabaster'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['_static', 'htmlcov', 'pytest.html']
