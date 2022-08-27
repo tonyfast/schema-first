@@ -9,7 +9,7 @@ import sys
 from hatchling.builders.hooks.plugin.interface import BuildHookInterface
 
 
-class LarkStandAloneBuildHook(BuildHookInterface):
+class SchemaCodeGen(BuildHookInterface):
     PLUGIN_NAME = "hatch-schema-codegen"
 
     def initialize(self, version, build_data):
