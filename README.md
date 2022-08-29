@@ -1,5 +1,7 @@
 # `schema-first` 
 
+![](https://user-images.githubusercontent.com/4236275/187108667-853f7433-c56a-4975-8dbc-688098eb8457.jpg)
+
 __the dream__: json schema as a generic interface for development and co-development of software.
 
 the adoption of type interfaces in typescript and python have enabled teams to build larger communities around their software. type interfaces, or specifications, operate as a community contracts that codify the vocabularies used by its members. type systems in different languages can be semantically the same, but they will by syntactically different. as a result, type system conventions are not generally portable across languages.
